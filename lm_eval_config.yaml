@@ -1,0 +1,12 @@
+lm_eval:
+  extra_model_args:
+    placeholder: 1
+  tasks:
+  - gsm8k
+  num_fewshot: 5
+  limit: 250
+  batch_size: auto
+  num_concurrent: 256
+  max_retries: 10
+  max_gen_toks: 2048
+  apply_chat_template: true

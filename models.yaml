@@ -1,0 +1,273 @@
+models:
+
+  - name: gptoss120b-FP4-TP8-vllm
+    backend: vllm
+    path: /models/gpt-oss-120b
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: gptoss120b-FP4-TP1-vllm
+    backend: vllm
+    path: /models/gpt-oss-120b
+    params: ["--tensor-parallel-size", "1", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: gptoss20b-FP4-TP1-vllm
+    backend: vllm
+    path: /models/gpt-oss-20b
+    params: ["--tensor-parallel-size", "1", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.3-70B-FP8-TP8-vllm
+    backend: vllm
+    path: /models/Llama-3.3-70B-Instruct-FP8-KV
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.3-70B-FP8-TP1-vllm
+    backend: vllm
+    path: /models/Llama-3.3-70B-Instruct-FP8-KV
+    params: ["--tensor-parallel-size", "1", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.1-405B-FP8-TP8-vllm
+    backend: vllm
+    path: /models/Llama-3.1-405B-Instruct-FP8-KV
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: DSR1-FP8-TP8-vllm
+    backend: vllm
+    path: /models/DeepSeek-R1
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16", "--block-size", "1"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.3-70B-FP4-TP8-vllm
+    backend: vllm
+    path: /models/Llama-3.3-70B-Instruct-MXFP4-Preview
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.3-70B-FP4-TP1-vllm
+    backend: vllm
+    path: /models/Llama-3.3-70B-Instruct-MXFP4-Preview
+    params: ["--tensor-parallel-size", "1", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.1-405B-BF16-TP8-vllm
+    backend: vllm
+    path: /models/Llama-3.1-405B-Instruct
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.1-405B-FP4-TP8-vllm
+    backend: vllm
+    path: /models/Llama-3.1-405B-Instruct-MXFP4-Preview
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: DSR1-FP4-TP8-vllm
+    backend: vllm
+    path: /models/DeepSeek-R1-MXFP4-Preview
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16", "--block-size", "1"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama-4-Mave-17B-128E-FP8-TP8-vllm
+    backend: vllm
+    path: /models/Llama-4-Maverick-17B-128E-Instruct-FP8
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama-4-Mave-17B-128E-FP4-TP8-vllm
+    backend: vllm
+    path: /models/Llama-4-Maverick-17B-128E-Instruct-WMXFP4-AMXFP4-KVFP8-Scale-UINT8-MoE-Quant
+    params: ["--tensor-parallel-size", "8", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Qwen3-235B-A22B-Thinking-2507-FP8-TP4-vllm
+    backend: vllm
+    path: /models/Qwen3-235B-A22B-Thinking-2507-FP8
+    params: ["--tensor-parallel-size", "4", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Qwen3-30B-A3B-Thinking-2507-FP8-TP1-vllm
+    backend: vllm
+    path: /models/Qwen3-30B-A3B-Thinking-2507-FP8
+    params: ["--tensor-parallel-size", "1", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Qwen3-32B-FP8-TP1-vllm
+    backend: vllm
+    path: /models/Qwen3-32B-FP8
+    params: ["--tensor-parallel-size", "1", "--max-model-len", "32000", "--compilation-config", '{"full_cuda_graph":true}', "--swap-space", "16"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: gptoss120b-FP4-TP8-sgl
+    backend: sglang
+    path: /models/gpt-oss-120b
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: gptoss120b-FP4-TP1-sgl
+    backend: sglang
+    path: /models/gpt-oss-120b
+    params: ["--tensor-parallel-size", "1", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: gptoss20b-FP4-TP1-sgl
+    backend: sglang
+    path: /models/gpt-oss-20b
+    params: ["--tensor-parallel-size", "1", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.3-70B-FP8-TP8-sgl
+    backend: sglang
+    path: /models/Llama-3.3-70B-Instruct-FP8-KV
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.3-70B-FP8-TP1-sgl
+    backend: sglang
+    path: /models/Llama-3.3-70B-Instruct-FP8-KV
+    params: ["--tensor-parallel-size", "1", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.1-405B-FP8-TP8-sgl
+    backend: sglang
+    path: /models/Llama-3.1-405B-Instruct-FP8-KV
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: DSR1-FP8-TP8-sgl
+    backend: sglang
+    path: /models/DeepSeek-R1 
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.3-70B-FP4-TP8-sgl
+    backend: sglang
+    path: /models/Llama-3.3-70B-Instruct-MXFP4-Preview
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.3-70B-FP4-TP1-sgl
+    backend: sglang
+    path: /models/Llama-3.3-70B-Instruct-MXFP4-Preview
+    params: ["--tensor-parallel-size", "1", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.1-405B-BF16-TP8-sgl
+    backend: sglang
+    path: /models/Llama-3.1-405B-Instruct
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama3.1-405B-FP4-TP8-sgl
+    backend: sglang
+    path: /models/Llama-3.1-405B-Instruct-MXFP4-Preview
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: DSR1-FP4-TP8-sgl
+    backend: sglang
+    path: /models/DeepSeek-R1-0528-WMXFP4-AMXFP4-Scale-UINT8-MoE-Quant
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama-4-Mave-17B-128E-FP8-TP8-sgl
+    backend: sglang
+    path: /models/Llama-4-Maverick-17B-128E-Instruct-FP8
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Llama-4-Mave-17B-128E-FP4-TP8-sgl
+    backend: sglang
+    path: /models/Llama-4-Maverick-17B-128E-Instruct-WMXFP4-AMXFP4-KVFP8-Scale-UINT8-MoE-Quant
+    params: ["--tensor-parallel-size", "8", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Qwen3-235B-A22B-Thinking-2507-FP8-TP4-sgl
+    backend: sglang
+    path: /models/Qwen3-235B-A22B-Thinking-2507-FP8
+    params: ["--tensor-parallel-size", "4", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Qwen3-30B-A3B-Thinking-2507-FP8-TP1-sgl
+    backend: sglang
+    path: /models/Qwen3-30B-A3B-Thinking-2507-FP8
+    params: ["--tensor-parallel-size", "1", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
+
+  - name: Qwen3-32B-FP8-TP1-sgl
+    backend: sglang
+    path: /models/Qwen3-32B-FP8
+    params: ["--tensor-parallel-size", "1", "--chunked-prefill-size", "131072"]
+    expect:
+      metric: "exact_match,flexible-extract"
+      min: 0.90
